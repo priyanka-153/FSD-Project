@@ -9,23 +9,20 @@
     "frontend": {
       "root": "frontend",
       "framework": "vite",
-      "buildCommand": "npm install && npm run build",
-      "bindings": [
-        { "type": "service", "service": "backend", "format": "url", "env": "BACKEND_URL" }
-      ]
+      "buildCommand": "npm install && npm run build"
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": { "service": "backend" }
     },
     {
-      "source": "/uploads/(.*)",
+      "source": "/uploads/:path*",
       "destination": { "service": "backend" }
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "destination": { "service": "frontend" }
     }
   ]
